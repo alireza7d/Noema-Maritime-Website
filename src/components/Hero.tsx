@@ -3,28 +3,43 @@ import Link from 'next/link';
 export default function Hero() {
   return (
     <div style={{ position: 'relative', minHeight: '100svh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'var(--deep)' }}>
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(165deg,#071029 0%,#0d1a35 40%,#071e3d 70%,#0a1428 100%)' }}></div>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(180,210,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(180,210,255,0.04) 1px,transparent 1px)', backgroundSize: '60px 60px' }}></div>
-      <div style={{ position: 'relative', zIndex: 2, maxWidth: '1200px', margin: '0 auto', padding: '100px 1.5rem 60px', width: '100%' }}>
-        <div className="animate-fade-up delay-1" style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)', flexShrink: 0 }}></span>
+      {/* Background ship photo */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: 'url(https://images.unsplash.com/photo-1568689380834-8e46e7c7dce6?w=1600&q=80)',
+        backgroundSize: 'cover', backgroundPosition: 'center 40%',
+        opacity: 0.18,
+      }}></div>
+      {/* Dark overlay gradient */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(165deg,rgba(7,16,41,0.97) 0%,rgba(13,26,53,0.92) 40%,rgba(7,30,61,0.88) 70%,rgba(10,20,40,0.95) 100%)' }}></div>
+      {/* Grid pattern */}
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(180,210,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(180,210,255,0.03) 1px,transparent 1px)', backgroundSize: '60px 60px' }}></div>
+
+      <div style={{ position: 'relative', zIndex: 2, maxWidth: '1200px', margin: '0 auto', padding: '110px 1.5rem 60px', width: '100%' }}>
+        <div className="animate-fade-up delay-1" style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span style={{ display: 'inline-block', width: '32px', height: '1px', background: 'var(--gold)', flexShrink: 0 }}></span>
           NOEMAGROUP — Maritime Freight Solutions
         </div>
-        <h1 className="animate-fade-up delay-2" style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem,6vw,4.2rem)', fontWeight: 600, lineHeight: 1.15, color: '#f0f4fa', maxWidth: '820px', marginBottom: '24px', letterSpacing: '-0.02em' }}>
-          Maritime Freight Solutions for <span style={{ color: 'var(--gold)' }}>Dry Bulk Cargo</span>
+
+        <h1 className="animate-fade-up delay-2" style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.4rem,5.5vw,5rem)', fontWeight: 700, lineHeight: 1.08, color: '#f0f4fa', maxWidth: '820px', marginBottom: '28px', letterSpacing: '-0.02em' }}>
+          Maritime Freight Solutions for{' '}
+          <span style={{ color: 'var(--gold)' }}>Dry Bulk Cargo</span>
         </h1>
-        <p className="animate-fade-up delay-3" style={{ fontSize: 'clamp(15px,2.5vw,17px)', fontWeight: 300, color: 'var(--muted)', maxWidth: '560px', lineHeight: 1.75, marginBottom: '36px' }}>
-          NOEMA GROUP coordinates vessel capacity, cargo movement, and port-to-port shipping solutions for cargo owners, traders, and commercial clients.
+
+        <p className="animate-fade-up delay-3" style={{ fontSize: 'clamp(16px,2vw,19px)', fontWeight: 300, color: 'var(--muted)', maxWidth: '560px', lineHeight: 1.8, marginBottom: '44px' }}>
+          NOEMA GROUP coordinates vessel capacity, cargo movement, and port-to-port shipping solutions for cargo owners, traders, and commercial clients worldwide.
         </p>
-        <div className="animate-fade-up delay-4" style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '48px', maxWidth: '320px' }}>
-          <Link href="/inquiry" style={{ background: 'var(--gold)', color: 'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '15px 24px', textDecoration: 'none', textAlign: 'center', display: 'block' }}>Submit Cargo Inquiry</Link>
-          <Link href="/services" style={{ background: 'transparent', color: '#dce6f0', fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 24px', border: '1px solid var(--border2)', textDecoration: 'none', textAlign: 'center', display: 'block' }}>Request Freight Solution</Link>
-          <Link href="/contact" style={{ background: 'transparent', color: '#dce6f0', fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 24px', border: '1px solid var(--border2)', textDecoration: 'none', textAlign: 'center', display: 'block' }}>Contact Commercial Desk</Link>
+
+        <div className="animate-fade-up delay-4" style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '56px', maxWidth: '340px' }}>
+          <Link href="/inquiry" style={{ background: 'var(--gold)', color: 'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '16px 28px', textDecoration: 'none', textAlign: 'center', display: 'block' }}>Submit Cargo Inquiry</Link>
+          <Link href="/services" style={{ background: 'transparent', color: '#dce6f0', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '15px 28px', border: '1px solid var(--border2)', textDecoration: 'none', textAlign: 'center', display: 'block' }}>Request Freight Solution</Link>
+          <Link href="/contact" style={{ background: 'transparent', color: '#dce6f0', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '15px 28px', border: '1px solid var(--border2)', textDecoration: 'none', textAlign: 'center', display: 'block' }}>Contact Commercial Desk</Link>
         </div>
-        <div className="animate-fade-up delay-5" style={{ borderTop: '1px solid var(--border)', paddingTop: '0' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0' }}>
+
+        <div className="animate-fade-up delay-5" style={{ borderTop: '1px solid var(--border)' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             {['Dry Bulk Transport','Port-to-Port Freight','Vessel Capacity','Voyage Coordination'].map(t => (
-              <div key={t} style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--faint)', padding: '16px 16px 16px 0', marginRight: '16px', borderRight: '1px solid var(--border)' }}>{t}</div>
+              <div key={t} style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--faint)', padding: '18px 20px 18px 0', marginRight: '20px', borderRight: '1px solid var(--border)' }}>{t}</div>
             ))}
           </div>
         </div>
