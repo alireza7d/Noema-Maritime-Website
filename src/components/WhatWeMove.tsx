@@ -16,7 +16,7 @@ export default function WhatWeMove() {
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center', marginBottom: '48px' }}>
           <div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)', flexShrink: 0 }}></span>Commodity Coverage
             </div>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 700, color: '#f0f4fa', marginBottom: '20px', lineHeight: 1.15 }}>What We Move</h2>
@@ -24,7 +24,6 @@ export default function WhatWeMove() {
               NOEMA GROUP transports dry bulk commodities across global trade routes, covering a broad range of cargo types suited to handysize through panamax vessel classes.
             </p>
           </div>
-          {/* Port photo */}
           <div style={{ position: 'relative', borderRadius: '2px', overflow: 'hidden', height: '260px' }}>
             <img
               src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80"
@@ -34,11 +33,10 @@ export default function WhatWeMove() {
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, var(--deep), transparent)' }}></div>
           </div>
         </div>
-
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1px', background: 'var(--border)' }}>
-          {cargoes.map(c=>(
-            <div key={c.name} style={{ background: 'var(--ocean)', padding: '24px 16px', textAlign: 'center' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--white)', marginBottom: '6px' }}>{c.name}</div>
+          {cargoes.map(c => (
+            <div key={c.name} style={{ background: 'var(--ocean)', padding: '24px 16px', textAlign: 'center' as const }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#dce6f0', marginBottom: '6px' }}>{c.name}</div>
               <div style={{ fontSize: '11px', color: 'var(--faint)' }}>{c.desc}</div>
             </div>
           ))}
