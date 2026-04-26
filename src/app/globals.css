@@ -37,3 +37,7 @@ body { background: var(--deep); color: #f0f4fa; }
   50% { opacity: 0.4; }
 }
 .pulse-dot { animation: pulse-dot 2s infinite; }
+
+/* Mobile base resets */
+img, video { max-width: 100%; }
+table { width: 100%; }
