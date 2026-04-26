@@ -21,30 +21,22 @@ export default function Nav() {
     <>
       <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000, background: 'rgba(7,16,41,0.97)', backdropFilter: 'blur(16px)', borderBottom: '1px solid var(--border)', padding: '0 1.5rem' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '76px' }}>
-
           <Link href="/" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center' }}>
             <img src="/logo-horizontal.png" alt="NOEMA GROUP" style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
           </Link>
-
           <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             {links.map((l) => (
               <Link key={l.href} href={l.href} style={{
                 color: pathname === l.href ? 'var(--gold2)' : '#c8d8e8',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '13px',
-                fontWeight: 600,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                padding: '8px 14px',
-                textDecoration: 'none',
+                fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600,
+                letterSpacing: '0.08em', textTransform: 'uppercase',
+                padding: '8px 14px', textDecoration: 'none',
                 borderBottom: pathname === l.href ? '2px solid var(--gold)' : '2px solid transparent',
-                transition: 'color 0.2s',
               }}>
                 {l.label}
               </Link>
             ))}
           </div>
-
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <Link href="/inquiry" className="nav-cta" style={{ background: 'var(--gold)', color: 'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '10px 20px', textDecoration: 'none', whiteSpace: 'nowrap' }}>
               Cargo Inquiry
@@ -56,7 +48,6 @@ export default function Nav() {
             </button>
           </div>
         </div>
-
         {open && (
           <div className="mobile-menu" style={{ background: 'rgba(7,16,41,0.99)', borderTop: '1px solid var(--border)', padding: '16px 1.5rem 24px' }}>
             {links.map((l) => (
@@ -64,23 +55,16 @@ export default function Nav() {
                 {l.label}
               </Link>
             ))}
-            <Link href="/inquiry" onClick={() => setOpen(false)} style={{ display: 'block', marginTop: '16px', background: 'var(--gold)', color: 'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '15px', textDecoration: 'none', textAlign: 'center' as const }}>
+            <Link href="/inquiry" onClick={() => setOpen(false)} style={{ display: 'block', marginTop: '16px', background: 'var(--gold)', color: 'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '15px', textDecoration: 'none', textAlign: 'center' }}>
               Submit Cargo Inquiry
             </Link>
           </div>
         )}
       </nav>
-
-      <style>{`
-        @media (max-width: 1024px) {
-          .desktop-nav { display: none !important; }
-          .hamburger { display: flex !important; }
-          .nav-cta { display: none !important; }
-        }
-        @media (min-width: 1025px) {
-          .mobile-menu { display: none !important; }
-        }
-      `}</style>
+      <style>{\`
+        @media (max-width: 1024px) { .desktop-nav { display: none !important; } .hamburger { display: flex !important; } .nav-cta { display: none !important; } }
+        @media (min-width: 1025px) { .mobile-menu { display: none !important; } }
+      \`}</style>
     </>
   );
 }
