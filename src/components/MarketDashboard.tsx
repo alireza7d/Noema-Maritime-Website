@@ -50,7 +50,7 @@ const srcStyle: React.CSSProperties = { fontSize: '9px', color: 'var(--faint)', 
 export default function MarketDashboard() {
   const [data, setData] = useState<MarketData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [localTime, setLocalTime] = useState('');
+  const [ctTime, setCtTime] = useState('');
 
   useEffect(() => {
     fetch('/api/market')
@@ -58,9 +58,18 @@ export default function MarketDashboard() {
       .then((d: MarketData) => {
         setData(d);
         setLoading(false);
-        // Show local time of the user
+        // Always show Central Time (CT)
         const t = new Date(d.lastUpdated);
-        setLocalTime(t.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }));
+        const ct = t.toLocaleString('en-US', {
+          timeZone: 'America/Chicago',
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit',
+          hour12: true,
+        });
+        setCtTime(ct + ' CT');
       })
       .catch(() => setLoading(false));
   }, []);
@@ -69,7 +78,6 @@ export default function MarketDashboard() {
     <section style={{ padding: 'clamp(48px,8vw,96px) 0', background: 'var(--navy)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
 
-        {/* Status bar */}
         <div style={{ background: 'var(--navy3)', border: '1px solid rgba(184,148,42,0.25)', padding: '12px 18px', marginBottom: '32px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div className="pulse-dot" style={{ width: '7px', height: '7px', borderRadius: '50%', flexShrink: 0, background: loading ? '#d29922' : data?.live ? '#4ade80' : 'var(--silver)' }}></div>
@@ -77,10 +85,9 @@ export default function MarketDashboard() {
               {loading ? 'FETCHING LIVE MARKET DATA...' : data?.live ? 'LIVE DATA — UPDATES HOURLY' : 'ESTIMATED DATA — LIVE FEED UNAVAILABLE'}
             </span>
           </div>
-          {localTime && <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)' }}>Updated: {localTime} (your local time)</span>}
+          {ctTime && <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)' }}>Updated: {ctTime}</span>}
         </div>
 
-        {/* Metric cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1px', background: 'var(--border)', marginBottom: '1px' }}>
 
           <div style={cardStyle}>
@@ -124,14 +131,12 @@ export default function MarketDashboard() {
           ))}
         </div>
 
-        {/* Source note */}
         <div style={{ background: 'var(--navy3)', border: '1px solid var(--border)', padding: '14px 18px', marginBottom: '48px' }}>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)', lineHeight: 1.9 }}>
             BDI sourced from Baltic Exchange via Stooq. Brent Crude from ICE Futures via Yahoo Finance. VLSFO bunker estimate derived from Brent (USD/bbl × 7.33 barrel-to-tonne conversion + $85/MT spread). Port congestion and vessel availability reflect NOEMA GROUP commercial desk assessment. All data cached hourly on Vercel edge.
           </p>
         </div>
 
-        {/* Trade corridors */}
         <div>
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)', flexShrink: 0 }}></span>
@@ -160,7 +165,6 @@ export default function MarketDashboard() {
           </p>
         </div>
 
-        {/* Disclaimer */}
         <div style={{ marginTop: '48px', padding: '20px', background: 'var(--navy3)', border: '1px solid var(--border)' }}>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)', lineHeight: 1.9, letterSpacing: '0.04em' }}>
             DISCLAIMER: Market data is sourced from publicly available financial data providers for general commercial reference only. VLSFO estimates are indicative and do not represent actual port bunker prices. This information does not constitute financial advice or a freight quotation. For precise freight indications, submit a cargo inquiry to our commercial desk.
