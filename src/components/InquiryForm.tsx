@@ -1,16 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-const iStyle: React.CSSProperties = {
-  background: 'var(--navy3)', border: '1px solid var(--border2)',
-  color: '#f0f4fa', fontFamily: 'inherit', fontSize: '15px',
-  padding: '11px 14px', outline: 'none', width: '100%',
-};
-const lStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700,
-  letterSpacing: '0.15em', textTransform: 'uppercase',
-  color: 'var(--faint)', display: 'block', marginBottom: '7px',
-};
+const iStyle: React.CSSProperties = { background: 'var(--navy3)', border: '1px solid var(--border2)', color: '#f0f4fa', fontFamily: 'inherit', fontSize: '15px', padding: '11px 14px', outline: 'none', width: '100%' };
+const lStyle: React.CSSProperties = { fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--faint)', display: 'block', marginBottom: '7px' };
 
 export default function InquiryForm() {
   const [status, setStatus] = useState<'idle'|'sending'|'sent'|'error'>('idle');
@@ -27,8 +19,8 @@ export default function InquiryForm() {
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
       const json = await res.json();
       if (json.success) { setStatus('sent'); (e.target as HTMLFormElement).reset(); }
-      else { console.error(json); setStatus('error'); }
-    } catch(err) { console.error(err); setStatus('error'); }
+      else setStatus('error');
+    } catch { setStatus('error'); }
   }
 
   if (status === 'sent') return (
@@ -53,9 +45,7 @@ export default function InquiryForm() {
         <div><label style={lStyle}>Cargo Type</label>
           <select name="cargo_type" style={{ ...iStyle, appearance: 'none' }}>
             <option value="">Select cargo type</option>
-            <option>Gypsum</option><option>Limestone</option><option>Cement Clinker</option>
-            <option>Aggregates</option><option>Fertilizer</option><option>Coal</option>
-            <option>Grain</option><option>Steel Products</option><option>Other Dry Bulk</option>
+            <option>Gypsum</option><option>Limestone</option><option>Cement Clinker</option><option>Aggregates</option><option>Fertilizer</option><option>Coal</option><option>Grain</option><option>Steel Products</option><option>Other Dry Bulk</option>
           </select>
         </div>
         <div><label style={lStyle}>Quantity (MT)</label><input type="text" name="quantity" placeholder="e.g. 25,000 MT" style={iStyle} /></div>
