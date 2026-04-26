@@ -24,29 +24,56 @@ export default function Nav() {
         background: 'rgba(7,16,41,0.97)', backdropFilter: 'blur(16px)',
         borderBottom: '1px solid var(--border)', padding: '0 1.5rem',
       }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
-          <Link href="/" style={{ fontFamily: 'var(--font-mono)', fontSize: '16px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none', color: '#f0f4fa', flexShrink: 0 }}>
-            NOEMA<span style={{ color: 'var(--gold)' }}>GROUP</span>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
+          
+          {/* LOGO — bigger and bolder */}
+          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
+            <span style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '22px',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: '#f0f4fa',
+            }}>
+              NOEMA<span style={{ color: 'var(--gold)' }}>GROUP</span>
+            </span>
           </Link>
 
           {/* Desktop nav */}
-          <div style={{ display: 'flex', gap: 0 }} className="desktop-nav">
+          <div className="desktop-nav" style={{ display: 'flex', gap: 0 }}>
             {links.map((l) => (
-              <Link key={l.href} href={l.href} style={{ color: pathname === l.href ? 'var(--gold2)' : 'var(--muted)', fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', padding: '8px 10px', textDecoration: 'none' }}>
+              <Link key={l.href} href={l.href} style={{
+                color: pathname === l.href ? 'var(--gold2)' : 'var(--muted)',
+                fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 500,
+                letterSpacing: '0.06em', textTransform: 'uppercase',
+                padding: '8px 11px', textDecoration: 'none', transition: 'color 0.2s',
+              }}>
                 {l.label}
               </Link>
             ))}
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <Link href="/inquiry" className="nav-cta" style={{ background: 'var(--gold)', color: 'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 16px', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            <Link href="/inquiry" className="nav-cta" style={{
+              background: 'var(--gold)', color: 'var(--deep)',
+              fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700,
+              letterSpacing: '0.1em', textTransform: 'uppercase',
+              padding: '9px 18px', textDecoration: 'none', whiteSpace: 'nowrap',
+            }}>
               Cargo Inquiry
             </Link>
+
             {/* Hamburger */}
             <button
               onClick={() => setOpen(!open)}
               className="hamburger"
-              style={{ background: 'none', border: '1px solid var(--border2)', padding: '8px', cursor: 'pointer', display: 'none', flexDirection: 'column', gap: '5px', alignItems: 'center', justifyContent: 'center', width: '38px', height: '38px' }}
+              style={{
+                background: 'none', border: '1px solid var(--border2)', padding: '8px',
+                cursor: 'pointer', display: 'none', flexDirection: 'column',
+                gap: '5px', alignItems: 'center', justifyContent: 'center',
+                width: '40px', height: '40px',
+              }}
               aria-label="Menu"
             >
               <span style={{ display: 'block', width: '18px', height: '2px', background: open ? 'var(--gold)' : 'var(--muted)', transition: 'all 0.2s', transform: open ? 'rotate(45deg) translate(5px,5px)' : 'none' }}></span>
@@ -60,11 +87,21 @@ export default function Nav() {
         {open && (
           <div style={{ background: 'rgba(7,16,41,0.99)', borderTop: '1px solid var(--border)', padding: '16px 1.5rem 24px' }} className="mobile-menu">
             {links.map((l) => (
-              <Link key={l.href} href={l.href} onClick={() => setOpen(false)} style={{ display: 'block', color: pathname === l.href ? 'var(--gold2)' : 'var(--muted)', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '14px 0', textDecoration: 'none', borderBottom: '1px solid var(--border)' }}>
+              <Link key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
+                display: 'block', color: pathname === l.href ? 'var(--gold2)' : 'var(--muted)',
+                fontFamily: 'var(--font-mono)', fontSize: '14px', fontWeight: 500,
+                letterSpacing: '0.08em', textTransform: 'uppercase',
+                padding: '16px 0', textDecoration: 'none', borderBottom: '1px solid var(--border)',
+              }}>
                 {l.label}
               </Link>
             ))}
-            <Link href="/inquiry" onClick={() => setOpen(false)} style={{ display: 'block', marginTop: '16px', background: 'var(--gold)', color: 'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px', textDecoration: 'none', textAlign: 'center' }}>
+            <Link href="/inquiry" onClick={() => setOpen(false)} style={{
+              display: 'block', marginTop: '16px', background: 'var(--gold)',
+              color: 'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '13px',
+              fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+              padding: '15px', textDecoration: 'none', textAlign: 'center',
+            }}>
               Submit Cargo Inquiry
             </Link>
           </div>
@@ -72,12 +109,12 @@ export default function Nav() {
       </nav>
 
       <style>{`
-        @media (max-width: 900px) {
+        @media (max-width: 960px) {
           .desktop-nav { display: none !important; }
           .hamburger { display: flex !important; }
           .nav-cta { display: none !important; }
         }
-        @media (min-width: 901px) {
+        @media (min-width: 961px) {
           .mobile-menu { display: none !important; }
         }
       `}</style>
