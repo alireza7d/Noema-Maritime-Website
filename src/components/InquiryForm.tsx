@@ -24,7 +24,7 @@ export default function InquiryForm() {
   }
 
   if (status === 'sent') return (
-    <div style={{ background: 'var(--navy2)', border: '1px solid var(--border2)', padding: '64px 44px', maxWidth: '760px', textAlign: 'center' }}>
+    <div style={{ background: 'var(--navy2)', border: '1px solid var(--border2)', padding: 'clamp(32px,6vw,64px) clamp(20px,4vw,44px)', maxWidth: '760px', textAlign: 'center' }}>
       <div style={{ fontSize: '3rem', color: 'var(--gold)', marginBottom: '20px' }}>✓</div>
       <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: '#f0f4fa', marginBottom: '12px' }}>Inquiry Received</h2>
       <p style={{ color: 'var(--muted)', fontSize: '15px', marginBottom: '24px' }}>Our commercial desk will review your cargo requirements and respond within 1 business day.</p>
@@ -33,11 +33,11 @@ export default function InquiryForm() {
   );
 
   return (
-    <form onSubmit={handleSubmit} style={{ background: 'var(--navy2)', border: '1px solid var(--border2)', padding: '44px', maxWidth: '760px' }}>
+    <form onSubmit={handleSubmit} style={{ background: 'var(--navy2)', border: '1px solid var(--border2)', padding: 'clamp(24px,4vw,44px)', maxWidth: '760px' }}>
       <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '16px' }}>Cargo Inquiry Form</div>
-      <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: '#f0f4fa', marginBottom: '8px' }}>Submit Your Freight Requirements</h2>
-      <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '32px' }}>Our commercial desk will respond within one business day.</p>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+      <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.3rem,3vw,1.6rem)', color: '#f0f4fa', marginBottom: '8px' }}>Submit Your Freight Requirements</h2>
+      <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '28px' }}>Our commercial desk will respond within one business day.</p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
         <div><label style={lStyle}>Company Name</label><input type="text" name="company" placeholder="Your company name" style={iStyle} required /></div>
         <div><label style={lStyle}>Contact Person</label><input type="text" name="name" placeholder="Full name" style={iStyle} required /></div>
         <div><label style={lStyle}>Email Address</label><input type="email" name="email" placeholder="commercial@yourcompany.com" style={iStyle} required /></div>
@@ -66,7 +66,7 @@ export default function InquiryForm() {
         <div style={{ gridColumn: '1 / -1' }}><label style={lStyle}>Additional Notes</label><textarea rows={4} name="message" placeholder="Port restrictions, draft limitations, special cargo requirements..." style={{ ...iStyle, resize: 'vertical' }} /></div>
       </div>
       {status === 'error' && <p style={{ color: '#f87171', fontFamily: 'var(--font-mono)', fontSize: '12px', marginTop: '16px' }}>Something went wrong. Please email info@noemagroup.net directly.</p>}
-      <div style={{ marginTop: '28px', display: 'flex', gap: '12px', alignItems: 'center' }}>
+      <div style={{ marginTop: '24px', display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center' }}>
         <button type="submit" disabled={status==='sending'} style={{ background: status==='sending'?'var(--navy3)':'var(--gold)', color: status==='sending'?'var(--faint)':'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 28px', border: 'none', cursor: status==='sending'?'not-allowed':'pointer' }}>
           {status === 'sending' ? 'Sending...' : 'Submit Inquiry'}
         </button>
