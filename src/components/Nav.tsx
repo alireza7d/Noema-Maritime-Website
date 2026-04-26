@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -26,28 +27,24 @@ export default function Nav() {
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
           
-          {/* LOGO — bigger and bolder */}
-          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
-            <span style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '22px',
-              fontWeight: 700,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: '#f0f4fa',
-            }}>
-              NOEMA<span style={{ color: 'var(--gold)' }}>GROUP</span>
-            </span>
+          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+            <Image
+              src="/logo-horizontal.png"
+              alt="NOEMA GROUP"
+              width={180}
+              height={54}
+              style={{ objectFit: 'contain', height: '44px', width: 'auto' }}
+              priority
+            />
           </Link>
 
-          {/* Desktop nav */}
           <div className="desktop-nav" style={{ display: 'flex', gap: 0 }}>
             {links.map((l) => (
               <Link key={l.href} href={l.href} style={{
                 color: pathname === l.href ? 'var(--gold2)' : 'var(--muted)',
                 fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 500,
                 letterSpacing: '0.06em', textTransform: 'uppercase',
-                padding: '8px 11px', textDecoration: 'none', transition: 'color 0.2s',
+                padding: '8px 11px', textDecoration: 'none',
               }}>
                 {l.label}
               </Link>
@@ -63,8 +60,6 @@ export default function Nav() {
             }}>
               Cargo Inquiry
             </Link>
-
-            {/* Hamburger */}
             <button
               onClick={() => setOpen(!open)}
               className="hamburger"
@@ -83,7 +78,6 @@ export default function Nav() {
           </div>
         </div>
 
-        {/* Mobile menu */}
         {open && (
           <div style={{ background: 'rgba(7,16,41,0.99)', borderTop: '1px solid var(--border)', padding: '16px 1.5rem 24px' }} className="mobile-menu">
             {links.map((l) => (
@@ -108,7 +102,7 @@ export default function Nav() {
         )}
       </nav>
 
-      <style>{`
+      <style>{\`
         @media (max-width: 960px) {
           .desktop-nav { display: none !important; }
           .hamburger { display: flex !important; }
@@ -117,7 +111,7 @@ export default function Nav() {
         @media (min-width: 961px) {
           .mobile-menu { display: none !important; }
         }
-      `}</style>
+      \`}</style>
     </>
   );
 }
