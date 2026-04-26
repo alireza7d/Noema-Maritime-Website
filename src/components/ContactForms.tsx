@@ -12,7 +12,6 @@ const lStyle: React.CSSProperties = {
   color: 'var(--faint)', display: 'block', marginBottom: '7px',
 };
 
-const ACCESS_KEY = 'info@noemagroup.net';
 const tabs = ['General Inquiry', 'Freight Request', 'Partner Introduction'];
 
 export default function ContactForms() {
@@ -23,7 +22,7 @@ export default function ContactForms() {
     e.preventDefault();
     setStatus('sending');
     const data = new FormData(e.currentTarget);
-    data.append('access_key', ACCESS_KEY);
+    data.append('access_key', '52d94f14-fb96-4452-92f5-d74f6e79ac27');
     data.append('subject', 'NOEMA GROUP — ' + tabs[active]);
     data.append('from_name', 'NOEMA GROUP Website');
     data.append('redirect', 'false');
@@ -31,8 +30,8 @@ export default function ContactForms() {
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
       const json = await res.json();
       if (json.success) { setStatus('sent'); (e.target as HTMLFormElement).reset(); }
-      else setStatus('error');
-    } catch { setStatus('error'); }
+      else { console.error(json); setStatus('error'); }
+    } catch(err) { console.error(err); setStatus('error'); }
   }
 
   return (
