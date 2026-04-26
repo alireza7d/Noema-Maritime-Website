@@ -33,7 +33,11 @@ const staticMetrics = [
 ];
 
 function Arrow({ dir }: { dir: Direction }) {
-  const map = { up: { c: '#4ade80', s: '↑' }, down: { c: '#f87171', s: '↓' }, flat: { c: 'var(--silver)', s: '→' } };
+  const map: Record<Direction, { c: string; s: string }> = {
+    up: { c: '#4ade80', s: '↑' },
+    down: { c: '#f87171', s: '↓' },
+    flat: { c: 'var(--silver)', s: '→' }
+  };
   return <span style={{ color: map[dir].c }}>{map[dir].s} </span>;
 }
 
@@ -46,19 +50,20 @@ const srcStyle: React.CSSProperties = { fontSize: '9px', color: 'var(--faint)', 
 export default function MarketDashboard() {
   const [data, setData] = useState<MarketData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [localTime, setLocalTime] = useState('');
 
   useEffect(() => {
     fetch('/api/market')
       .then(r => r.json())
-      .then(d => { setData(d); setLoading(false); })
+      .then((d: MarketData) => {
+        setData(d);
+        setLoading(false);
+        // Show local time of the user
+        const t = new Date(d.lastUpdated);
+        setLocalTime(t.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }));
+      })
       .catch(() => setLoading(false));
   }, []);
-
-  const fmt = (iso: string) => {
-    try {
-      return new Date(iso).toLocaleString('en-US', { timeZone: 'UTC', dateStyle: 'medium', timeStyle: 'short' }) + ' UTC';
-    } catch { return iso; }
-  };
 
   return (
     <section style={{ padding: 'clamp(48px,8vw,96px) 0', background: 'var(--navy)' }}>
@@ -72,16 +77,16 @@ export default function MarketDashboard() {
               {loading ? 'FETCHING LIVE MARKET DATA...' : data?.live ? 'LIVE DATA — UPDATES HOURLY' : 'ESTIMATED DATA — LIVE FEED UNAVAILABLE'}
             </span>
           </div>
-          {data && <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)' }}>Updated: {fmt(data.lastUpdated)}</span>}
+          {localTime && <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)' }}>Updated: {localTime} (your local time)</span>}
         </div>
 
-        {/* Live metric cards */}
+        {/* Metric cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1px', background: 'var(--border)', marginBottom: '1px' }}>
 
           <div style={cardStyle}>
             <div style={labelStyle}>Baltic Dry Index</div>
             <div style={valStyle}>{loading ? '—' : data?.bdi.value}</div>
-            {data && <div style={{ fontSize: '12px', color: data.bdi.direction === 'up' ? '#4ade80' : data.bdi.direction === 'down' ? '#f87171' : 'var(--silver)' }}>
+            {data && <div style={{ fontSize: '12px', color: data.bdi.direction === 'up' ? '#4ade80' : data.bdi.direction === 'down' ? '#f87171' : 'var(--silver)', marginBottom: '4px' }}>
               <Arrow dir={data.bdi.direction} />{data.bdi.change}
             </div>}
             <div style={noteStyle}>Composite — BDI</div>
@@ -91,28 +96,28 @@ export default function MarketDashboard() {
           <div style={cardStyle}>
             <div style={labelStyle}>Brent Crude</div>
             <div style={valStyle}>{loading ? '—' : data?.crude.value}</div>
-            {data && <div style={{ fontSize: '12px', color: data.crude.direction === 'up' ? '#4ade80' : data.crude.direction === 'down' ? '#f87171' : 'var(--silver)' }}>
+            {data && <div style={{ fontSize: '12px', color: data.crude.direction === 'up' ? '#4ade80' : data.crude.direction === 'down' ? '#f87171' : 'var(--silver)', marginBottom: '4px' }}>
               <Arrow dir={data.crude.direction} />{data.crude.change}
             </div>}
-            <div style={noteStyle}>USD/bbl, ICE Futures</div>
+            <div style={noteStyle}>USD/bbl · ICE Futures</div>
             <div style={srcStyle}>Yahoo Finance (BZ=F)</div>
           </div>
 
           <div style={cardStyle}>
             <div style={labelStyle}>VLSFO Bunker Est.</div>
             <div style={valStyle}>{loading ? '—' : data?.bunker.value}</div>
-            {data && <div style={{ fontSize: '12px', color: data.bunker.direction === 'up' ? '#4ade80' : data.bunker.direction === 'down' ? '#f87171' : 'var(--silver)' }}>
+            {data && <div style={{ fontSize: '12px', color: data.bunker.direction === 'up' ? '#4ade80' : data.bunker.direction === 'down' ? '#f87171' : 'var(--silver)', marginBottom: '4px' }}>
               <Arrow dir={data.bunker.direction} />{data.bunker.change}
             </div>}
-            <div style={noteStyle}>USD/MT, Singapore ref.</div>
-            <div style={srcStyle}>Derived from Brent + spread</div>
+            <div style={noteStyle}>USD/MT · Singapore ref.</div>
+            <div style={srcStyle}>Derived: Brent × 7.33 + $85</div>
           </div>
 
           {staticMetrics.map(m => (
             <div key={m.label} style={cardStyle}>
               <div style={labelStyle}>{m.label}</div>
               <div style={valStyle}>{m.val}</div>
-              <div style={{ fontSize: '12px', color: m.color }}>{m.trend}</div>
+              <div style={{ fontSize: '12px', color: m.color, marginBottom: '4px' }}>{m.trend}</div>
               <div style={noteStyle}>{m.note}</div>
               <div style={srcStyle}>{m.source}</div>
             </div>
@@ -122,7 +127,7 @@ export default function MarketDashboard() {
         {/* Source note */}
         <div style={{ background: 'var(--navy3)', border: '1px solid var(--border)', padding: '14px 18px', marginBottom: '48px' }}>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)', lineHeight: 1.9 }}>
-            BDI sourced from Baltic Exchange via Stooq financial data. Brent Crude from ICE Futures via Yahoo Finance. VLSFO bunker is estimated from Brent with standard spread and does not represent actual port prices. Port congestion and vessel availability reflect NOEMA GROUP commercial desk assessment. Data cached hourly.
+            BDI sourced from Baltic Exchange via Stooq. Brent Crude from ICE Futures via Yahoo Finance. VLSFO bunker estimate derived from Brent (USD/bbl × 7.33 barrel-to-tonne conversion + $85/MT spread). Port congestion and vessel availability reflect NOEMA GROUP commercial desk assessment. All data cached hourly on Vercel edge.
           </p>
         </div>
 
@@ -158,7 +163,7 @@ export default function MarketDashboard() {
         {/* Disclaimer */}
         <div style={{ marginTop: '48px', padding: '20px', background: 'var(--navy3)', border: '1px solid var(--border)' }}>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)', lineHeight: 1.9, letterSpacing: '0.04em' }}>
-            DISCLAIMER: Market data is sourced from publicly available financial data providers for general commercial reference only. This information does not constitute financial advice or a freight quotation. For precise freight indications specific to your cargo and route, please submit a cargo inquiry to our commercial desk.
+            DISCLAIMER: Market data is sourced from publicly available financial data providers for general commercial reference only. VLSFO estimates are indicative and do not represent actual port bunker prices. This information does not constitute financial advice or a freight quotation. For precise freight indications, submit a cargo inquiry to our commercial desk.
           </p>
         </div>
       </div>
