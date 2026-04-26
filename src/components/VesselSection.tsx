@@ -8,17 +8,11 @@ const vessels = [
 export default function VesselSection() {
   return (
     <section style={{ padding: 'clamp(64px,8vw,112px) 0', background: 'var(--navy)', position: 'relative', overflow: 'hidden' }}>
-      {/* Background photo */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: 'url(https://images.unsplash.com/photo-1494587351196-bbf5f29cff42?w=1400&q=80)',
-        backgroundSize: 'cover', backgroundPosition: 'center',
-        opacity: 0.06,
-      }}></div>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://images.unsplash.com/photo-1494587351196-bbf5f29cff42?w=1400&q=80)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.06 }}></div>
       <div style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center', marginBottom: '48px' }}>
           <div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)', flexShrink: 0 }}></span>Vessel Capacity
             </div>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 700, color: '#f0f4fa', marginBottom: '20px', lineHeight: 1.15 }}>Vessel Coverage</h2>
@@ -36,10 +30,8 @@ export default function VesselSection() {
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', background: 'var(--border)' }}>
-          {vessels.map(v=>(
-            <div key={v.name} style={{ background: 'var(--navy3)', padding: '28px 24px', borderBottom: '3px solid transparent', transition: 'border-color 0.2s' }}
-              onMouseEnter={e=>(e.currentTarget.style.borderBottomColor='var(--gold)')}
-              onMouseLeave={e=>(e.currentTarget.style.borderBottomColor='transparent')}>
+          {vessels.map(v => (
+            <div key={v.name} style={{ background: 'var(--navy3)', padding: '28px 24px', borderBottom: '3px solid var(--gold)' }}>
               <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', fontWeight: 700, color: '#f0f4fa', marginBottom: '4px' }}>{v.name}</div>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--gold)', marginBottom: '12px' }}>{v.dwt}</div>
               <div style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>{v.desc}</div>
