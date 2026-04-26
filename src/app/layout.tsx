@@ -20,10 +20,12 @@ const courierPrime = Courier_Prime({
 
 export const metadata: Metadata = {
   title: 'NOEMA GROUP – Maritime Freight Solutions',
-  description:
-    'NOEMA GROUP coordinates vessel capacity, cargo movement, and port-to-port shipping solutions for cargo owners, traders, and commercial clients.',
-  keywords:
-    'maritime freight, dry bulk cargo, vessel capacity, port-to-port shipping, voyage coordination',
+  description: 'NOEMA GROUP coordinates vessel capacity, cargo movement, and port-to-port shipping solutions for cargo owners, traders, and commercial clients.',
+  keywords: 'maritime freight, dry bulk cargo, vessel capacity, port-to-port shipping, voyage coordination',
+  icons: {
+    icon: '/logo-icon.png',
+    apple: '/logo-icon.png',
+  },
 };
 
 export default function RootLayout({
