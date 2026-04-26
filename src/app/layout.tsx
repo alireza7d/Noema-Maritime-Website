@@ -19,7 +19,7 @@ const courierPrime = Courier_Prime({
 });
 
 export const metadata: Metadata = {
-  title: 'NOEMA GROUP – Maritime Freight Solutions',
+  title: 'NOEMA GROUP - Maritime Freight Solutions',
   description: 'NOEMA GROUP coordinates vessel capacity, cargo movement, and port-to-port shipping solutions for cargo owners, traders, and commercial clients.',
   keywords: 'maritime freight, dry bulk cargo, vessel capacity, port-to-port shipping, voyage coordination',
   icons: {
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dmSans.variable} ${playfair.variable} ${courierPrime.variable}`}
+        className={dmSans.variable + ' ' + playfair.variable + ' ' + courierPrime.variable}
         style={{ background: 'var(--deep)', color: '#f0f4fa', fontFamily: 'var(--font-sans)' }}
       >
         {children}
