@@ -10,18 +10,18 @@ const services = [
 ];
 export default function ServicesGrid() {
   return (
-    <section style={{ padding: '96px 0', background: 'var(--navy2)' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+    <section style={{ padding: 'clamp(48px,8vw,96px) 0', background: 'var(--navy2)' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)' }}></span>Core Services
+          <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)', flexShrink: 0 }}></span>Core Services
         </div>
-        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.7rem,3vw,2.8rem)', fontWeight: 600, color: '#f0f4fa', marginBottom: '40px' }}>What We Provide</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1px', background: 'var(--border)' }}>
+        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.6rem,4vw,2.8rem)', fontWeight: 600, color: '#f0f4fa', marginBottom: '32px' }}>What We Provide</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', background: 'var(--border)' }}>
           {services.map(s=>(
-            <div key={s.n} style={{ background: 'var(--navy2)', padding: '32px 28px', transition: 'background 0.2s', cursor: 'default' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', color: 'var(--gold)', marginBottom: '16px' }}>{s.n}</div>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', fontWeight: 600, color: '#f0f4fa', marginBottom: '10px' }}>{s.title}</h3>
-              <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.7 }}>{s.body}</p>
+            <div key={s.n} style={{ background: 'var(--navy2)', padding: '28px 24px' }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', color: 'var(--gold)', marginBottom: '14px' }}>{s.n}</div>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', fontWeight: 600, color: '#f0f4fa', marginBottom: '10px' }}>{s.title}</h3>
+              <p style={{ color: 'var(--muted)', fontSize: '13px', lineHeight: 1.7 }}>{s.body}</p>
             </div>
           ))}
         </div>
