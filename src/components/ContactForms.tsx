@@ -1,17 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-const iStyle: React.CSSProperties = {
-  background: 'var(--navy3)', border: '1px solid var(--border2)',
-  color: '#f0f4fa', fontFamily: 'inherit', fontSize: '15px',
-  padding: '11px 14px', outline: 'none', width: '100%',
-};
-const lStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700,
-  letterSpacing: '0.15em', textTransform: 'uppercase',
-  color: 'var(--faint)', display: 'block', marginBottom: '7px',
-};
-
+const iStyle: React.CSSProperties = { background: 'var(--navy3)', border: '1px solid var(--border2)', color: '#f0f4fa', fontFamily: 'inherit', fontSize: '15px', padding: '11px 14px', outline: 'none', width: '100%' };
+const lStyle: React.CSSProperties = { fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--faint)', display: 'block', marginBottom: '7px' };
 const tabs = ['General Inquiry', 'Freight Request', 'Partner Introduction'];
 
 export default function ContactForms() {
@@ -30,8 +21,8 @@ export default function ContactForms() {
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
       const json = await res.json();
       if (json.success) { setStatus('sent'); (e.target as HTMLFormElement).reset(); }
-      else { console.error(json); setStatus('error'); }
-    } catch(err) { console.error(err); setStatus('error'); }
+      else setStatus('error');
+    } catch { setStatus('error'); }
   }
 
   return (
@@ -39,9 +30,7 @@ export default function ContactForms() {
       <div style={{ display: 'flex', gap: '1px', background: 'var(--border)', marginBottom: '1px' }}>
         {tabs.map((t, i) => (
           <button key={t} type="button" onClick={() => { setActive(i); setStatus('idle'); }}
-            style={{ background: active===i?'var(--ocean)':'var(--navy2)', color: active===i?'var(--gold2)':'var(--faint)',
-              fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em',
-              textTransform: 'uppercase', padding: '14px 20px', border: 'none', cursor: 'pointer' }}>
+            style={{ background: active===i?'var(--ocean)':'var(--navy2)', color: active===i?'var(--gold2)':'var(--faint)', fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 20px', border: 'none', cursor: 'pointer' }}>
             {t}
           </button>
         ))}
