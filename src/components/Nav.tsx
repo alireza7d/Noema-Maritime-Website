@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import Image from 'next/image';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -26,15 +25,12 @@ export default function Nav() {
         borderBottom: '1px solid var(--border)', padding: '0 1.5rem',
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
-          
+
           <Link href="/" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center' }}>
-            <Image
+            <img
               src="/logo-horizontal.png"
               alt="NOEMA GROUP"
-              width={180}
-              height={54}
-              style={{ objectFit: 'contain', height: '44px', width: 'auto' }}
-              priority
+              style={{ height: '46px', width: 'auto', objectFit: 'contain' }}
             />
           </Link>
 
@@ -79,7 +75,7 @@ export default function Nav() {
         </div>
 
         {open && (
-          <div style={{ background: 'rgba(7,16,41,0.99)', borderTop: '1px solid var(--border)', padding: '16px 1.5rem 24px' }} className="mobile-menu">
+          <div className="mobile-menu" style={{ background: 'rgba(7,16,41,0.99)', borderTop: '1px solid var(--border)', padding: '16px 1.5rem 24px' }}>
             {links.map((l) => (
               <Link key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
                 display: 'block', color: pathname === l.href ? 'var(--gold2)' : 'var(--muted)',
@@ -102,7 +98,7 @@ export default function Nav() {
         )}
       </nav>
 
-      <style>{\`
+      <style>{`
         @media (max-width: 960px) {
           .desktop-nav { display: none !important; }
           .hamburger { display: flex !important; }
@@ -111,7 +107,7 @@ export default function Nav() {
         @media (min-width: 961px) {
           .mobile-menu { display: none !important; }
         }
-      \`}</style>
+      `}</style>
     </>
   );
 }
