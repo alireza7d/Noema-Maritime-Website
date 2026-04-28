@@ -1,16 +1,20 @@
 const vessels = [
-  { name:'Handymax', dwt:'40,000–60,000 DWT', desc:'Versatile mid-size vessels with wide port access. Often geared. Suited to ports with moderate draft restrictions.' },
-  { name:'Supramax', dwt:'50,000–60,000 DWT', desc:'The most widely traded size in the dry bulk market. Commonly geared for flexible port access.' },
-  { name:'Ultramax', dwt:'60,000–65,000 DWT', desc:'Modern, fuel-efficient vessels with higher capacity and port flexibility. Usually geared with five holds.' },
-  { name:'Panamax', dwt:'65,000–85,000 DWT', desc:'High-volume bulk carriers for deep-draft major ports and large cargo consignments. Generally gearless.' },
+  { name:'Handymax', dwt:'40,000–60,000 DWT', desc:'Versatile mid-size vessels with wide port access. Often geared. Suited to ports with moderate draft restrictions and a range of commodity types.' },
+  { name:'Supramax', dwt:'50,000–60,000 DWT', desc:'The most widely traded size in the dry bulk market. Commonly equipped with onboard cranes for flexible port access.' },
+  { name:'Ultramax', dwt:'60,000–65,000 DWT', desc:'Modern, fuel-efficient vessels offering higher capacity with port flexibility. Usually geared with five cargo holds.' },
+  { name:'Panamax', dwt:'65,000–85,000 DWT', desc:'High-volume bulk carriers suited to deep-draft major ports and large cargo consignments. Generally gearless.' },
 ];
 
 export default function VesselSection() {
   return (
     <section style={{ background: 'var(--navy)' }}>
-      {/* Full-width vessel photo */}
+      {/* Container terminal with cranes photo */}
       <div style={{ position: 'relative', height: 'clamp(220px,35vw,420px)', overflow: 'hidden' }}>
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80" alt="Bulk carrier vessel at sea" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 55%' }} />
+        <img
+          src="https://images.unsplash.com/photo-1577985043696-8bd54d9f6c5a?w=1600&q=80"
+          alt="Container terminal with cranes"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 60%' }}
+        />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 20%, var(--navy) 100%)' }}></div>
         <div style={{ position: 'absolute', bottom: '32px', left: '1.5rem', maxWidth: '1200px' }}>
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}>
