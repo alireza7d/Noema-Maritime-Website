@@ -2,7 +2,7 @@ import Link from 'next/link';
 export default function CtaBand() {
   return (
     <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--ocean)', borderTop: '1px solid rgba(180,200,230,0.12)', borderBottom: '1px solid rgba(180,200,230,0.12)', padding: 'clamp(64px,8vw,96px) 0' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://images.unsplash.com/photo-1494587351196-bbf5f29cff42?w=1400&q=80)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.1 }}></div>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://images.pexels.com/photos/3884440/pexels-photo-3884440.jpeg?auto=compress&cs=tinysrgb&w=1400)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.1 }}></div>
       <div style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)', flexShrink: 0 }}></span>Commercial Desk
