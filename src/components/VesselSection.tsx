@@ -8,10 +8,9 @@ const vessels = [
 export default function VesselSection() {
   return (
     <section style={{ background: 'var(--navy)' }}>
-      {/* Container terminal with cranes photo */}
       <div style={{ position: 'relative', height: 'clamp(220px,35vw,420px)', overflow: 'hidden' }}>
         <img
-          src="https://images.unsplash.com/photo-1577985043696-8bd54d9f6c5a?w=1600&q=80"
+          src="https://images.unsplash.com/photo-1590492089737-e3e1e40a1f6a?w=1600&q=80"
           alt="Container terminal with cranes"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 60%' }}
         />
