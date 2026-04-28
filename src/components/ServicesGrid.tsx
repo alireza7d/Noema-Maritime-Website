@@ -11,21 +11,21 @@ const services = [
 
 export default function ServicesGrid() {
   return (
-    <section style={{ padding: 'clamp(64px,8vw,112px) 0', background: 'var(--navy2)' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '48px', alignItems: 'center', marginBottom: '56px' }}>
-          <div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)', flexShrink: 0 }}></span>Core Services
-            </div>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 700, color: '#f0f4fa', lineHeight: 1.15, marginBottom: '16px' }}>What We Provide</h2>
-            <p style={{ color: '#b0c8e0', fontSize: 'clamp(15px,1.8vw,17px)', lineHeight: 1.8 }}>From cargo inquiry to voyage completion — the full commercial structure to move dry bulk cargo by sea.</p>
+    <section style={{ background: 'var(--navy2)' }}>
+      <div style={{ position: 'relative', height: 'clamp(180px,25vw,300px)', overflow: 'hidden' }}>
+        <img src="https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Maritime port operations" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 20%, var(--navy2) 100%)' }}></div>
+        <div style={{ position: 'absolute', bottom: '32px', left: '1.5rem' }}>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)', flexShrink: 0 }}></span>Core Services
           </div>
-          <div style={{ position: 'relative', height: '260px', overflow: 'hidden', borderRadius: '2px' }}>
-            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80" alt="Maritime port operations" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, var(--navy2), transparent 50%)' }}></div>
-          </div>
+          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 700, color: '#f0f4fa', lineHeight: 1.15 }}>What We Provide</h2>
         </div>
+      </div>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem clamp(64px,8vw,112px)' }}>
+        <p style={{ color: '#b0c8e0', fontSize: 'clamp(15px,1.8vw,17px)', lineHeight: 1.8, maxWidth: '640px', margin: '32px 0 40px' }}>
+          From cargo inquiry to voyage completion, the full commercial structure to move dry bulk cargo by sea.
+        </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1px', background: 'rgba(180,200,230,0.1)' }}>
           {services.map(s => (
             <div key={s.n} style={{ background: 'var(--navy2)', padding: '32px 28px', borderLeft: '3px solid var(--gold)' }}>
