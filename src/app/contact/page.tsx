@@ -3,27 +3,57 @@ import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import ContactForms from '@/components/ContactForms';
 
+export const metadata = {
+  title: 'Contact — NOEMA GROUP',
+  description: 'Get in touch with NOEMA GROUP commercial desk.',
+};
+
 export default function Contact() {
   return (
     <main>
       <Nav />
-      <PageHeader breadcrumb="Contact" title="Contact NOEMA GROUP" subtitle="Commercial desk. Freight inquiries. Partner introductions." />
-      <section style={{ padding: '96px 0', background: 'var(--navy)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
+      <PageHeader
+        title="Contact"
+        subtitle="Reach our commercial desk for freight inquiries, vessel capacity questions, or general information."
+      />
+      <section style={{ padding: 'clamp(48px,8vw,96px) 0', background: 'var(--navy)' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(32px,5vw,64px)' }}>
+
+            {/* Contact info */}
             <div>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)' }}></span>Commercial Desk
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '24px' }}>Get In Touch</div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--faint)', marginBottom: '8px' }}>Email</div>
+                <a href="mailto:info@noemagroup.net" style={{ color: '#dce6f0', fontSize: '16px', textDecoration: 'none' }}>info@noemagroup.net</a>
               </div>
-              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', fontWeight: 600, color: '#f0f4fa', marginBottom: '24px' }}>Get In Touch</h2>
-              {[['Email','info@noemagroup.net'],['Location','United States / International Maritime Network'],['Response Time','Within 1 business day']].map(([label,val])=>(
-                <div key={label} style={{ background: 'var(--navy2)', border: '1px solid var(--border)', padding: '20px', marginBottom: '12px' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>{label}</div>
-                  <div style={{ fontSize: '15px', color: '#dce6f0' }}>{val}</div>
-                </div>
-              ))}
+
+              <div style={{ marginBottom: '32px' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--faint)', marginBottom: '8px' }}>Location</div>
+                <div style={{ color: '#dce6f0', fontSize: '16px' }}>United States</div>
+                <div style={{ color: 'var(--muted)', fontSize: '14px', marginTop: '4px' }}>International Maritime Network</div>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--faint)', marginBottom: '8px' }}>Response Time</div>
+                <div style={{ color: '#dce6f0', fontSize: '16px' }}>Within one business day</div>
+              </div>
+
+              <div style={{ background: 'var(--navy3)', border: '1px solid var(--border)', padding: '20px' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '10px' }}>Commercial Desk</div>
+                <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.7 }}>
+                  For cargo inquiries, include cargo type, quantity, load port, discharge port, and laycan window for a faster response.
+                </p>
+              </div>
             </div>
-            <ContactForms />
+
+            {/* Contact form */}
+            <div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '24px' }}>Send a Message</div>
+              <ContactForms />
+            </div>
+
           </div>
         </div>
       </section>
