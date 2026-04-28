@@ -13,11 +13,10 @@ const cargoes = [
 export default function WhatWeMove() {
   return (
     <section style={{ background: 'var(--deep)' }}>
-      {/* Photo banner */}
       <div style={{ position: 'relative', height: 'clamp(200px,30vw,380px)', overflow: 'hidden' }}>
-        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1600&q=80" alt="Port bulk cargo operations" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 60%' }} />
+        <img src="https://images.pexels.com/photos/2226458/pexels-photo-2226458.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Port bulk cargo operations" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 60%' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, var(--deep) 100%)' }}></div>
-        <div style={{ position: 'absolute', bottom: '32px', left: '1.5rem', right: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ position: 'absolute', bottom: '32px', left: '1.5rem', right: '1.5rem' }}>
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span style={{ display: 'inline-block', width: '24px', height: '1px', background: 'var(--gold)', flexShrink: 0 }}></span>Commodity Coverage
           </div>
