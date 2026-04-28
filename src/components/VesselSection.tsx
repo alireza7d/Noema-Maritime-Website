@@ -10,9 +10,9 @@ export default function VesselSection() {
     <section style={{ background: 'var(--navy)' }}>
       <div style={{ position: 'relative', height: 'clamp(220px,35vw,420px)', overflow: 'hidden' }}>
         <img
-          src="https://images.unsplash.com/photo-1590492089737-e3e1e40a1f6a?w=1600&q=80"
+          src="https://images.pexels.com/photos/1554646/pexels-photo-1554646.jpeg?auto=compress&cs=tinysrgb&w=1600"
           alt="Container terminal with cranes"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 60%' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 50%' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 20%, var(--navy) 100%)' }}></div>
         <div style={{ position: 'absolute', bottom: '32px', left: '1.5rem', maxWidth: '1200px' }}>
