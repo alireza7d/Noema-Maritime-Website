@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function Hero() {
   return (
     <div style={{ position: 'relative', minHeight: '100svh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'var(--deep)' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://images.unsplash.com/photo-1568689380834-8e46e7c7dce6?w=1800&q=80)', backgroundSize: 'cover', backgroundPosition: 'center 40%', opacity: 0.2 }}></div>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://images.pexels.com/photos/1095814/pexels-photo-1095814.jpeg?auto=compress&cs=tinysrgb&w=1800)', backgroundSize: 'cover', backgroundPosition: 'center 40%', opacity: 0.2 }}></div>
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(165deg,rgba(7,16,41,0.96) 0%,rgba(13,26,53,0.88) 50%,rgba(7,30,61,0.92) 100%)' }}></div>
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(180,210,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(180,210,255,0.03) 1px,transparent 1px)', backgroundSize: '60px 60px' }}></div>
       <div style={{ position: 'relative', zIndex: 2, maxWidth: '1200px', margin: '0 auto', padding: '110px 1.5rem 60px', width: '100%' }}>
