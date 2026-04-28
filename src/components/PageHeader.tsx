@@ -1,10 +1,10 @@
-export default function PageHeader({ breadcrumb, title, subtitle }: { breadcrumb: string; title: string; subtitle?: string }) {
+export default function PageHeader({ title, subtitle }: { breadcrumb?: string; title: string; subtitle?: string }) {
   return (
     <div style={{ padding: 'clamp(100px,12vw,130px) 0 clamp(40px,5vw,64px)', background: 'var(--deep)', borderBottom: '1px solid var(--border)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
 
-        {/* NOEMA gold GROUP white — same as hero */}
-        <div style={{ marginBottom: '24px' }}>
+        {/* Exact same as Hero tagline */}
+        <div style={{ marginBottom: '28px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '8px' }}>
             <span style={{ display: 'inline-block', width: '36px', height: '2px', background: 'var(--gold)', flexShrink: 0 }}></span>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '22px', fontWeight: 700, letterSpacing: '0.12em' }}>
@@ -14,7 +14,7 @@ export default function PageHeader({ breadcrumb, title, subtitle }: { breadcrumb
           </div>
           <div style={{ paddingLeft: '50px' }}>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.2em', color: 'var(--gold)', textTransform: 'uppercase' as const }}>
-              {breadcrumb}
+              Maritime Freight Solutions
             </span>
           </div>
         </div>
