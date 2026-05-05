@@ -20,19 +20,14 @@ export default function ContactForms() {
     try {
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
       const json = await res.json();
-      if (json.success) {
-        setSent(true);
-      }
-    } catch {
-      // fail silently
-    }
+      if (json.success) setSent(true);
+    } catch { }
     setSending(false);
   }
 
   if (sent) {
     return (
       <div style={{ background: 'var(--navy2)', border: '1px solid rgba(74,222,128,0.3)', padding: '40px 32px', textAlign: 'center' as const }}>
-        <div style={{ fontSize: '32px', marginBottom: '16px' }}>OK</div>
         <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: '#f0f4fa', marginBottom: '12px' }}>Message Sent</div>
         <p style={{ color: '#8fa8c8', fontSize: '15px', lineHeight: 1.7 }}>Thank you. Our commercial desk will respond within one business day.</p>
         <button onClick={() => setSent(false)} style={{ marginTop: '24px', background: 'transparent', border: '1px solid var(--border2)', color: 'var(--muted)', fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '10px 20px', cursor: 'pointer' }}>
