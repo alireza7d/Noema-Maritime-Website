@@ -4,7 +4,7 @@ import PageHeader from '@/components/PageHeader';
 import ContactForms from '@/components/ContactForms';
 
 export const metadata = {
-  title: 'Contact — NOEMA GROUP',
+  title: 'Contact â NOEMA GROUP',
   description: 'Get in touch with NOEMA GROUP commercial desk.',
 };
 
@@ -26,7 +26,7 @@ export default function Contact() {
 
               <div style={{ marginBottom: '32px' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--faint)', marginBottom: '8px' }}>Email</div>
-                <a href="mailto:info@noemagroup.net" style={{ color: '#dce6f0', fontSize: '16px', textDecoration: 'none' }}>info@noemagroup.net</a>
+                <a href="mailto:info@noemagroup.co" style={{ color: '#dce6f0', fontSize: '16px', textDecoration: 'none' }}>info@noemagroup.co</a>
               </div>
 
               <div style={{ marginBottom: '32px' }}>
