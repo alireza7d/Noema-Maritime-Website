@@ -12,7 +12,7 @@ export default function InquiryForm() {
     setStatus('sending');
     const data = new FormData(e.currentTarget);
     data.append('access_key', '52d94f14-fb96-4452-92f5-d74f6e79ac27');
-    data.append('subject', 'NOEMA GROUP — New Cargo Inquiry');
+    data.append('subject', 'NOEMA GROUP â New Cargo Inquiry');
     data.append('from_name', 'NOEMA GROUP Website');
     data.append('redirect', 'false');
     try {
@@ -25,7 +25,7 @@ export default function InquiryForm() {
 
   if (status === 'sent') return (
     <div style={{ background: 'var(--navy2)', border: '1px solid var(--border2)', padding: 'clamp(32px,6vw,64px) clamp(20px,4vw,44px)', maxWidth: '760px', textAlign: 'center' }}>
-      <div style={{ fontSize: '3rem', color: 'var(--gold)', marginBottom: '20px' }}>✓</div>
+      <div style={{ fontSize: '3rem', color: 'var(--gold)', marginBottom: '20px' }}>â</div>
       <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: '#f0f4fa', marginBottom: '12px' }}>Inquiry Received</h2>
       <p style={{ color: 'var(--muted)', fontSize: '15px', marginBottom: '24px' }}>Our commercial desk will review your cargo requirements and respond within 1 business day.</p>
       <button onClick={() => setStatus('idle')} style={{ background: 'transparent', color: 'var(--silver)', fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid var(--border2)', padding: '10px 20px', cursor: 'pointer' }}>Submit Another Inquiry</button>
@@ -65,7 +65,7 @@ export default function InquiryForm() {
         <div><label style={lStyle}>Freight Idea (if any)</label><input type="text" name="freight_idea" placeholder="USD per MT - optional" style={iStyle} /></div>
         <div style={{ gridColumn: '1 / -1' }}><label style={lStyle}>Additional Notes</label><textarea rows={4} name="message" placeholder="Port restrictions, draft limitations, special cargo requirements..." style={{ ...iStyle, resize: 'vertical' }} /></div>
       </div>
-      {status === 'error' && <p style={{ color: '#f87171', fontFamily: 'var(--font-mono)', fontSize: '12px', marginTop: '16px' }}>Something went wrong. Please email info@noemagroup.net directly.</p>}
+      {status === 'error' && <p style={{ color: '#f87171', fontFamily: 'var(--font-mono)', fontSize: '12px', marginTop: '16px' }}>Something went wrong. Please email info@noemagroup.co directly.</p>}
       <div style={{ marginTop: '24px', display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center' }}>
         <button type="submit" disabled={status==='sending'} style={{ background: status==='sending'?'var(--navy3)':'var(--gold)', color: status==='sending'?'var(--faint)':'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 28px', border: 'none', cursor: status==='sending'?'not-allowed':'pointer' }}>
           {status === 'sending' ? 'Sending...' : 'Submit Inquiry'}
