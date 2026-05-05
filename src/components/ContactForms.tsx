@@ -14,7 +14,7 @@ export default function ContactForms() {
     setStatus('sending');
     const data = new FormData(e.currentTarget);
     data.append('access_key', '52d94f14-fb96-4452-92f5-d74f6e79ac27');
-    data.append('subject', 'NOEMA GROUP — ' + tabs[active]);
+    data.append('subject', 'NOEMA GROUP â ' + tabs[active]);
     data.append('from_name', 'NOEMA GROUP Website');
     data.append('redirect', 'false');
     try {
@@ -38,7 +38,7 @@ export default function ContactForms() {
       <div style={{ background: 'var(--navy2)', border: '1px solid var(--border2)', padding: 'clamp(20px,4vw,32px)', borderTop: 'none' }}>
         {status === 'sent' ? (
           <div style={{ textAlign: 'center', padding: '32px 0' }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '16px', color: 'var(--gold)' }}>✓</div>
+            <div style={{ fontSize: '2.5rem', marginBottom: '16px', color: 'var(--gold)' }}>â</div>
             <p style={{ color: 'var(--gold2)', fontFamily: 'var(--font-mono)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>Message Sent</p>
             <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '20px' }}>Our commercial desk will respond within 1 business day.</p>
             <button type="button" onClick={() => setStatus('idle')} style={{ background: 'transparent', color: 'var(--silver)', fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid var(--border2)', padding: '8px 16px', cursor: 'pointer' }}>Send Another</button>
@@ -68,7 +68,7 @@ export default function ContactForms() {
               <div><label style={lStyle}>Area of Coverage</label><input style={iStyle} type="text" name="coverage" placeholder="Geographic coverage / commodities" /></div>
               <div><label style={lStyle}>Introduction</label><textarea rows={4} name="message" style={{ ...iStyle, resize: 'vertical' }} placeholder="Brief introduction and basis for collaboration..." required /></div>
             </>)}
-            {status === 'error' && <p style={{ color: '#f87171', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>Something went wrong. Please email info@noemagroup.net directly.</p>}
+            {status === 'error' && <p style={{ color: '#f87171', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>Something went wrong. Please email info@noemagroup.co directly.</p>}
             <button type="submit" disabled={status==='sending'} style={{ background: status==='sending'?'var(--navy3)':'var(--gold)', color: status==='sending'?'var(--faint)':'var(--deep)', fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 28px', border: 'none', cursor: status==='sending'?'not-allowed':'pointer', alignSelf: 'flex-start', width: '100%' }}>
               {status === 'sending' ? 'Sending...' : 'Send Message'}
             </button>
