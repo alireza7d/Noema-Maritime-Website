@@ -27,7 +27,7 @@ export default function Footer() {
           <div>
             <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '18px' }}>Contact</h4>
             <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '12px' }}>
-              <a href="mailto:info@noemagroup.net" style={{ color: '#8fa8c8', fontSize: '15px', textDecoration: 'none' }}>info@noemagroup.net</a>
+              <a href="mailto:info@noemagroup.co" style={{ color: '#8fa8c8', fontSize: '15px', textDecoration: 'none' }}>info@noemagroup.co</a>
               <span style={{ color: '#8fa8c8', fontSize: '15px' }}>United States</span>
               <span style={{ color: 'var(--faint)', fontSize: '14px' }}>International Maritime Network</span>
             </div>
