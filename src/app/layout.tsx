@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   keywords: 'maritime freight, dry bulk cargo, vessel capacity, port-to-port shipping, voyage coordination, chartering, gypsum, limestone, cement clinker',
   metadataBase: new URL('https://noemagroup.co'),
   alternates: { canonical: 'https://noemagroup.co' },
+  verification: {
+    google: 'iLxjArQJueCB7NoPRdl6WnzsKjCzvaF5FkkpuqyqRZE',
+  },
   openGraph: {
     title: 'NOEMA GROUP - Maritime Freight Solutions',
     description: 'U.S.-based maritime freight and chartering company for dry bulk cargo.',
